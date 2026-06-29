@@ -4,6 +4,7 @@ project(RLECViewer)
 cmake_policy(SET CMP0091 NEW)
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 set(CMAKE_MFC_FLAG 1) # Use MFC in a static library
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
 add_compile_definitions(_MBCS WIN32 NDEBUG _WINDOWS)
 
 add_executable(RLECViewer WIN32
