@@ -564,6 +564,7 @@ BOOL CRLECViewerDlg::RLInit()
 		m_hInstDLL = LoadLibrary("ECView.dll");
 		if (m_hInstDLL == NULL)
 		{
+			OutputDebugString("RLECViewer Debug: Failed to load ECView.dll!\n");
 			return FALSE;
 		}
 	}
@@ -624,6 +625,7 @@ BOOL CRLECViewerDlg::RLInit2()
 		m_hInstDLL2 = LoadLibrary("ClevoEcInfo.dll");
 		if (m_hInstDLL2 == NULL)
 		{
+			OutputDebugString("RLECViewer Debug: Failed to load ClevoEcInfo.dll!\n");
 			return FALSE;
 		}
 	}
