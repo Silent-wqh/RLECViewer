@@ -723,7 +723,7 @@ void CRLECViewerDlg::OnTimer(UINT nIDEvent)
 					CString strTemp;
 					CString strVGAName;
 					strVGAName.Format("VGA%d", i);
-					strTemp.Format("%s：Fan Speed: %d%%, Temp: %d C\n", i == 0 ? "CPU":strVGAName, (int)((float)m_stFanInfo.nFanDuty[i] * 100/255) + 1, m_stFanInfo.nFanTempRemote[i]);
+					strTemp.Format("%s: Fan Speed: %d%%, Temp: %d C\n", i == 0 ? "CPU":strVGAName, (int)((float)m_stFanInfo.nFanDuty[i] * 100/255) + 1, m_stFanInfo.nFanTempRemote[i]);
 					strTempDuty += strTemp;
 				}
 
