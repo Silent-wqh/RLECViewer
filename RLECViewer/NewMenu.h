@@ -1058,8 +1058,13 @@ protected:
       const AFX_MSGMAP CNewFrame<baseClass>::messageMap = { &baseClass::GetThisMessageMap, GetMessageEntries()};
     #endif
   #else
-    template<class baseClass>
-    const AFX_MSGMAP CNewFrame<baseClass>::messageMap = { &baseClass::messageMap, GetMessageEntries()};
+    #if _MFC_VER < 0x0700
+      template<class baseClass>
+      const AFX_MSGMAP CNewFrame<baseClass>::messageMap = { &baseClass::messageMap, GetMessageEntries()};
+    #else
+      template<class baseClass>
+      const AFX_MSGMAP CNewFrame<baseClass>::messageMap = { &baseClass::GetThisMessageMap, GetMessageEntries()};
+    #endif
   #endif // _AFXDLL
 #endif // _GUILIB_
 
