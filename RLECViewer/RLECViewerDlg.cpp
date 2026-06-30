@@ -963,8 +963,14 @@ int CRLECViewerDlg::RLCalcManualFanDuty(int nFanIdx)
 			}
 		}
 
-		// ponytail: auto mode max matches manual mode max
-		if (nCalcDutyPer == g_nAutoFanDuty[0]) nCalcDutyPer = m_stAllInfo.nFanDutyArray[nFanIdx][0];
+		// ponytail: scale auto mode duty proportionally to reach 80% CPU and 100% GPU
+		int originalMax = g_nAutoFanDuty[0]; // 70
+		int targetMax = (nFanIdx == 0) ? 80 : 100;
+		if (m_stAllInfo.nFanDutyArray[nFanIdx][0] > targetMax) {
+			targetMax = m_stAllInfo.nFanDutyArray[nFanIdx][0];
+		}
+		nCalcDutyPer = (nCalcDutyPer * targetMax) / originalMax;
+		if (nCalcDutyPer > 100) nCalcDutyPer = 100;
 	}
 	else
 	{
